@@ -43,5 +43,6 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
 LOCAL_LDLIBS := -lGLESv2 -llog 
 
 LOCAL_ARM_MODE := arm
+LOCAL_CPPFLAGS := $(LOCAL_CFLAGS) -std=c++11
 
 include $(BUILD_SHARED_LIBRARY)
