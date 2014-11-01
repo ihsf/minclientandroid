@@ -31,7 +31,8 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
 	ProfileLogHandler.cpp \
 	Profiler.cpp	\
 	rg_etc1.cpp \
-	SDLstuff.cpp
+	SDLstuff.cpp \
+	../lz4-r123/lz4.c
 
 # LOCAL_SHARED_LIBRARIES := SDL2 SDL2_net 
 #avcodec avutil avformat avfilter avdevice swscale
