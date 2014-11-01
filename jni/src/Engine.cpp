@@ -12,10 +12,10 @@ int Engine::rectSizeY[MAX_SERVERS];
 
 bool Engine::rectMode = false;
 
-int Engine::screenWidthRT = 240; // will be figured out later in SDLstuff::init 
-int Engine::screenHeightRT = 240;
-int Engine::screenWidthGL = 240;
-int Engine::screenHeightGL = 240;
+int Engine::screenWidthRT = 1280; // will be figured out later in SDLstuff::init 
+int Engine::screenHeightRT = 720;
+int Engine::screenWidthGL = 1280;
+int Engine::screenHeightGL = 720;
 int Engine::serverFrameBuffers = 0; 
 
 int Engine::clicksPerSecond = 0;
