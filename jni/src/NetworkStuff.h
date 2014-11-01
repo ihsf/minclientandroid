@@ -43,6 +43,7 @@ class NetworkStuff {
 	private:
 		Camera* camera;
 		OpenGLstuff* openglstuff; 
+    char* lz4Buf;
 
 		void init();
     void determineNumBytesToReceive();

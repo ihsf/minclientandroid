@@ -1,3 +1,4 @@
+#include "../lz4-r123/lz4.h"
 #include "NetworkStuff.h"
 #include <math.h>
 
@@ -6,7 +7,9 @@
   #define GL_ETC1_RGB8_OES                                        0x8D64
 #endif
 
-NetworkStuff::NetworkStuff(Camera* camera_, OpenGLstuff* openglstuff_){
+NetworkStuff::NetworkStuff(Camera* camera_, OpenGLstuff* openglstuff_)
+  : lz4Buf( nullptr )
+{
 	this->camera = camera_;
 	this->openglstuff = openglstuff_;
 
@@ -25,6 +28,7 @@ NetworkStuff::NetworkStuff(Camera* camera_, OpenGLstuff* openglstuff_){
 }
 
 NetworkStuff::~NetworkStuff(){
+  delete[] lz4Buf;
 }
 
 void NetworkStuff::init() {
@@ -65,6 +69,7 @@ void NetworkStuff::init() {
 	}
 
   determineNumBytesToReceive();
+  lz4Buf = new char[LZ4_compressBound( numBytesToReceive )];
 	sendInitPackets();	
 }
 
@@ -252,20 +257,22 @@ void NetworkStuff::receiveMessageFromRenderServerETC1Rect(){
 }
 
 void NetworkStuff::receiveMessageFromRenderServerETC1NoRect(){
-  unsigned char* dataPtr = openglstuff->frameBufferPointer; 
-  unsigned char* dataPtrTmp = dataPtr;
+  // HACK only one server
+  int size;
+  SDLNet_TCP_Recv( Engine::socketDescriptor[0], &size, 4 );
 
-	unsigned int numBytesToReceiveTemp = numBytesToReceive;
-  
+  auto cnt = size;
+  auto ptr = lz4Buf;
+
 	do {
 		int serverIDthatHasTheFrameRenderedForUs = (Engine::numFramesRendered ) % Engine::numServers;
 
-		int length = SDLNet_TCP_Recv(Engine::socketDescriptor[serverIDthatHasTheFrameRenderedForUs], dataPtrTmp, numBytesToReceiveTemp);
-		if(length > 0){
-			numBytesToReceiveTemp -= length;
-			dataPtrTmp += length;
-		}
-	} while (numBytesToReceiveTemp > 0);	
+		int length = SDLNet_TCP_Recv(Engine::socketDescriptor[serverIDthatHasTheFrameRenderedForUs], ptr, cnt);
+    cnt -= length;
+    ptr += length;
+	} while (cnt > 0);	
+
+  LZ4_decompress_safe( lz4Buf, (char*)openglstuff->frameBufferPointer, size, numBytesToReceive );
 }
 
 void NetworkStuff::determineNumBytesToReceive(){
