@@ -117,6 +117,7 @@ public class SDLActivity extends Activity {
         Log.v("SDL", "onResume()");
         super.onResume();
         SDLActivity.handleResume();
+        mSurface.hideNavigationBar();
     }
 
 
@@ -846,6 +847,8 @@ class SDLSurface extends SurfaceView implements SurfaceHolder.Callback,
         // Some arbitrary defaults to avoid a potential division by zero
         mWidth = 1.0f;
         mHeight = 1.0f;
+
+        hideNavigationBar();
     }
      
     public void handleResume() {
@@ -978,6 +981,8 @@ class SDLSurface extends SurfaceView implements SurfaceHolder.Callback,
         // Dispatch the different events depending on where they come from
         // Some SOURCE_DPAD or SOURCE_GAMEPAD are also SOURCE_KEYBOARD
         // So, we try to process them as DPAD or GAMEPAD events first, if that fails we try them as KEYBOARD
+
+        hideNavigationBar();
         
         if ( (event.getSource() & 0x00000401) != 0 || /* API 12: SOURCE_GAMEPAD */
                    (event.getSource() & InputDevice.SOURCE_DPAD) != 0 ) {
@@ -1011,6 +1016,8 @@ class SDLSurface extends SurfaceView implements SurfaceHolder.Callback,
     // Touch events
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        hideNavigationBar();
+
         /* Ref: http://developer.android.com/training/gestures/multi.html */
         final int touchDevId = event.getDeviceId();
         final int pointerCount = event.getPointerCount();
@@ -1110,6 +1117,24 @@ class SDLSurface extends SurfaceView implements SurfaceHolder.Callback,
                                       event.values[2] / SensorManager.GRAVITY_EARTH - 1);
         }
     }    
+
+    public void hideNavigationBar()
+    {
+        if( android.os.Build.VERSION.SDK_INT >= 19 )
+        {
+            setSystemUiVisibility(
+                    SYSTEM_UI_FLAG_LAYOUT_STABLE |
+                    SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+                    SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+                    SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                    SYSTEM_UI_FLAG_FULLSCREEN |
+                    SYSTEM_UI_FLAG_IMMERSIVE_STICKY );
+        }
+        else if( android.os.Build.VERSION.SDK_INT >= 14 )
+        {
+            setSystemUiVisibility( SYSTEM_UI_FLAG_LOW_PROFILE );
+        }
+    }
 }
 
 /* This is a fake invisible editor view that receives the input and defines the
