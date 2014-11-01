@@ -140,7 +140,7 @@ void Engine::parseConfigFile(){
 	startMap = (char*)"dan3";
   
   //serverName[0] = (char*)"192.168.0.103";
-  serverName[0] = (char*)"127.0.0.1";
+  serverName[0] = (char*)"192.168.1.107";
   //serverName[0] = (char*)"192.168.178.30";
   serverPort[0] = 2000;
 
