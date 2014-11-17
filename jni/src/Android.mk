@@ -15,23 +15,23 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
 
 # Add your application source files here...
 LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
-	Camera.cpp \
-	CTextParser.cpp \
-	CTexture.cpp \
-	CTextureGL.cpp \
-	CVector2.cpp \
-	CVector3.cpp \
-	Engine.cpp \
-	Etc1.cpp \
-	Font.cpp \
-	MinClient.cpp \
-	NetworkStuff.cpp \
-	OpenGLES2stuff.cpp \
-	OpenGLstuff.cpp \
-	ProfileLogHandler.cpp \
-	Profiler.cpp	\
-	rg_etc1.cpp \
-	SDLstuff.cpp \
+	../../../minclient/Camera.cpp \
+	../../../minclient/CTextParser.cpp \
+	../../../minclient/CTexture.cpp \
+	../../../minclient/CTextureGL.cpp \
+	../../../minclient/CVector2.cpp \
+	../../../minclient/CVector3.cpp \
+	../../../minclient/Engine.cpp \
+	../../../minclient/Etc1.cpp \
+	../../../minclient/Font.cpp \
+	../../../minclient/MinClient.cpp \
+	../../../minclient/NetworkStuff.cpp \
+	../../../minclient/OpenGLES2stuff.cpp \
+	../../../minclient/OpenGLstuff.cpp \
+	../../../minclient/ProfileLogHandler.cpp \
+	../../../minclient/Profiler.cpp	\
+	../../../minclient/rg_etc1.cpp \
+	../../../minclient/SDLstuff.cpp \
 	../lz4-r123/lz4.c
 
 # LOCAL_SHARED_LIBRARIES := SDL2 SDL2_net 
