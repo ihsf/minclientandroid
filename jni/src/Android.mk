@@ -40,7 +40,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
  #avcodec avutil avformat
 
 # LOCAL_LDLIBS := -lGLESv1_CM -llog 
-LOCAL_LDLIBS := -lGLESv2 -llog 
+LOCAL_LDLIBS := -lGLESv2 -llog -lEGL
 
 LOCAL_ARM_MODE := arm
 LOCAL_CPPFLAGS := $(LOCAL_CFLAGS) -std=c++11
