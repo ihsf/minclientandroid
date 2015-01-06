@@ -32,6 +32,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
 	../../../minclient/Profiler.cpp	\
 	../../../minclient/rg_etc1.cpp \
 	../../../minclient/SDLstuff.cpp \
+	../../../minclient/Sensors.cpp \
 	../lz4-r123/lz4.c
 
 # LOCAL_SHARED_LIBRARIES := SDL2 SDL2_net 
