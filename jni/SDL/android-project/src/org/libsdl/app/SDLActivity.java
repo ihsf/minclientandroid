@@ -1069,9 +1069,11 @@ class SDLSurface extends SurfaceView implements SurfaceHolder.Callback,
     public void enableSensor(int sensortype, boolean enabled) {
         // TODO: This uses getDefaultSensor - what if we have >1 accels?
         if (enabled) {
-            mSensorManager.registerListener(this, 
-                            mSensorManager.getDefaultSensor(sensortype), 
-                            SensorManager.SENSOR_DELAY_GAME, null);
+			// daniel: this is default in SDL
+            mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(sensortype), SensorManager.SENSOR_DELAY_GAME, null);
+			
+			// daniel: changing the update rate of the accel to 4 ms (250 Hz)
+			//mSensorManager.registerListener(this, mSensorManager.getDefaultSensor(sensortype), 4, null);
         } else {
             mSensorManager.unregisterListener(this, 
                             mSensorManager.getDefaultSensor(sensortype));
