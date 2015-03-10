@@ -1,0 +1,7 @@
+minclientandroid
+================
+This project uses the build files from libSDL 2.0. http://www.libsdl.org/
+Further, the code for libSDL 2.0 and libSDL_net is included in here.
+
+libSDL 2.0 license information can be found in jni/SDL/README-SDL.txt
+libSDL_Net 2.0 license information can be found in jni/SDL/README.txt
