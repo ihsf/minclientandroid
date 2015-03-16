@@ -19,17 +19,12 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
 	../../../minclient/CVector2.cpp \
 	../../../minclient/CVector3.cpp \
 	../../../minclient/Engine.cpp \
-	../../../minclient/Etc1.cpp \
 	../../../minclient/Font.cpp \
 	../../../minclient/MinClient.cpp \
 	../../../minclient/NetworkStuff.cpp \
 	../../../minclient/OpenGLES2stuff.cpp \
 	../../../minclient/OpenGLstuff.cpp \
-	../../../minclient/ProfileLogHandler.cpp \
-	../../../minclient/Profiler.cpp	\
-	../../../minclient/rg_etc1.cpp \
 	../../../minclient/SDLstuff.cpp \
-	../../../minclient/Sensors.cpp \
 	../lz4-r123/lz4.c
 
 LOCAL_SHARED_LIBRARIES := SDL2 SDL2_net 
