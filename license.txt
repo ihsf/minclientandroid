@@ -5,3 +5,9 @@ Further, the code for libSDL 2.0 and libSDL_net is included in here.
 
 libSDL 2.0 license information can be found in jni/SDL/README-SDL.txt
 libSDL_Net 2.0 license information can be found in jni/SDL/README.txt
+
+LZ4
+===
+LZ4 - Fast LZ compression algorithm
+, Copyright (C) 2011-2014, Yann Collet.
+   BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
