@@ -20,6 +20,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
 	../../../minclient/CVector3.cpp \
 	../../../minclient/Engine.cpp \
 	../../../minclient/Font.cpp \
+	../../../minclient/HeadTracking.cpp \
 	../../../minclient/MinClient.cpp \
 	../../../minclient/NetworkStuff.cpp \
 	../../../minclient/OpenGLES2stuff.cpp \

@@ -6,10 +6,10 @@
 *.dex
 
 # Java class files
-*.class
+#*.class
 
 # generated files
-bin/
+#bin/
 gen/
 libs/
 obj/
@@ -21,7 +21,7 @@ local.properties
 *.pydevproject
 .project
 .metadata
-bin/**
+#bin/**
 tmp/**
 tmp/**/*
 *.tmp
